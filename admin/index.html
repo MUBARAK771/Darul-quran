@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Darul Quran — Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <aside class="sidebar">
+        <div class="brand">Darul <span>Quran</span></div>
+        <nav class="admin-nav">
+            <button class="nav-item active" data-view="overview"><i class="fa-solid fa-gauge-high"></i> Overview</button>
+            <button class="nav-item" data-view="applications"><i class="fa-solid fa-file-lines"></i> Applications</button>
+            <button class="nav-item" data-view="payments"><i class="fa-solid fa-credit-card"></i> Payments</button>
+            <button class="nav-item" data-view="users"><i class="fa-solid fa-users"></i> Users</button>
+            <button class="nav-item" data-view="settings"><i class="fa-solid fa-gear"></i> Settings</button>
+        </nav>
+        <div class="sidebar-footer">Admin</div>
+    </aside>
+
+    <header class="topbar">
+        <button id="toggleSidebar" class="toggle"><i class="fa-solid fa-bars"></i></button>
+        <div class="search">
+            <input type="search" placeholder="Search applications, payments...">
+        </div>
+        <div class="actions">
+            <div class="user"><i class="fa-solid fa-user"></i> admin</div>
+        </div>
+    </header>
+
+    <main class="main">
+        <section id="overview" class="view active">
+            <div class="section-header">
+                <div>
+                    <p class="eyebrow">Dashboard</p>
+                    <h1>Overview</h1>
+                </div>
+                <div class="section-action"><button class="btn btn-primary">New Application</button></div>
+            </div>
+            <div class="cards">
+                <div class="card accent-card">
+                    <h3>Applications</h3>
+                    <p class="value" id="count-apps">0</p>
+                </div>
+                <div class="card accent-card-soft">
+                    <h3>Payments</h3>
+                    <p class="value" id="count-payments">0</p>
+                </div>
+                <div class="card accent-card-soft">
+                    <h3>Students</h3>
+                    <p class="value" id="count-users">0</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="applications" class="view">
+            <div class="section-header">
+                <div>
+                    <p class="eyebrow">Applications</p>
+                    <h1>Submitted Applications</h1>
+                </div>
+                <div class="section-action"><button class="btn btn-outline">Export CSV</button></div>
+            </div>
+            <table class="table" id="applications-table">
+                <thead>
+                    <tr><th>Ref</th><th>Name</th><th>Email</th><th>State</th><th>Country</th><th>Status</th></tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </section>
+
+        <section id="payments" class="view">
+            <div class="section-header">
+                <div>
+                    <p class="eyebrow">Payments</p>
+                    <h1>Payment Records</h1>
+                </div>
+                <div class="section-action"><button class="btn btn-outline">Refresh</button></div>
+            </div>
+            <table class="table" id="payments-table">
+                <thead>
+                    <tr><th>Ref</th><th>Name</th><th>Amount</th><th>Email</th><th>Status</th></tr>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </section>
+
+        <section id="users" class="view">
+            <div class="section-header">
+                <div>
+                    <p class="eyebrow">Users</p>
+                    <h1>Account Management</h1>
+                </div>
+            </div>
+            <p>List of admin users and students will appear here.</p>
+        </section>
+
+        <section id="settings" class="view">
+            <div class="section-header">
+                <div>
+                    <p class="eyebrow">Settings</p>
+                    <h1>System Configuration</h1>
+                </div>
+            </div>
+            <p>Basic settings and integration keys.</p>
+        </section>
+    </main>
+
+    <div class="mobile-nav" aria-label="Mobile navigation">
+        <button class="mobile-nav-item active" data-view="overview" title="Overview"><i class="fa-solid fa-gauge-high"></i></button>
+        <button class="mobile-nav-item" data-view="applications" title="Applications"><i class="fa-solid fa-file-lines"></i></button>
+        <button class="mobile-nav-item" data-view="payments" title="Payments"><i class="fa-solid fa-credit-card"></i></button>
+        <button class="mobile-nav-item" data-view="users" title="Users"><i class="fa-solid fa-users"></i></button>
+        <button class="mobile-nav-item" data-view="settings" title="Settings"><i class="fa-solid fa-gear"></i></button>
+    </div>
+
+    <script src="dashboard.js"></script>
+</body>
+</html>
