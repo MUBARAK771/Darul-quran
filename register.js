@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', () => {
             prevBtn.disabled = false;
         }
         if (currentIndex === totalSteps - 1) {
-            nextBtn.innerHTML = 'Submit Application <i class="fa-solid fa-check"></i>';
+            nextBtn.innerHTML = 'Process Payment <i class="fa-solid fa-check"></i>';
         } else {
             nextBtn.innerHTML = 'Continue <i class="fa-solid fa-arrow-right"></i>';
         }

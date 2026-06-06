@@ -511,7 +511,10 @@ footer {
     .about-grid, 
     .footer-top {
         grid-template-columns: 1fr;
-        text-align: center;
+        text-align: start;
+    }
+    footer {
+        padding: 40px 20px;
     }
 
     .footer-top {
@@ -519,7 +522,7 @@ footer {
     }
 
     .footer-brand p {
-        margin: 0 auto;
+        margin: 0 ;
     }
 
     .section-title.left {
