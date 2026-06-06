@@ -140,19 +140,29 @@
                         <p>The Boarding Hifzh Programme is a carefully structured two-year programme designed for students who aspire to memorize the Noble Qur'an while receiving authentic Islamic education in a disciplined and conducive environment.</p>
                         <p>The programme combines Qur'an memorization, Islamic studies, character development, and daily practical implementation of the Sunnah.</p>
 
+                        <h4>PAYMENT OPTIONS</h4>
+                        <div class="payment-options">
+                            <label><input type="radio" name="payment-plan" value="full" checked> Full payment (₦133,000)</label>
+                            <label><input type="radio" name="payment-plan" value="installments"> Pay in 3 installments (₦44,333 each) — first installment charged now</label>
+                        </div>
+
                         <h4>PAYMENT FEES</h4>
                         <div class="payment-breakdown">
                             <div class="payment-item">
                                 <span>Form Fee:</span>
-                                <span>₦3,000</span>
+                                <span id="payment-form-fee">₦3,000</span>
                             </div>
                             <div class="payment-item">
                                 <span>Entry Fee:</span>
-                                <span>₦130,000</span>
+                                <span id="payment-entry-fee">₦130,000</span>
                             </div>
                             <div class="payment-item total">
                                 <span>Total Amount Due:</span>
-                                <span>₦133,000</span>
+                                <span id="payment-total">₦133,000</span>
+                            </div>
+                            <div class="payment-item total" id="payment-now-row">
+                                <span>Amount to Pay Now:</span>
+                                <span id="payment-now">₦133,000</span>
                             </div>
                         </div>
 

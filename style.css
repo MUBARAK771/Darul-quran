@@ -296,7 +296,7 @@ nav ul li a:hover {
 .facilities-image img {
     width: 100%;
     border-radius: 30px;
-    box-shadow: 20px 20px 0 #14151443;
+    filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.3));
 }
 
 .facilities-list {

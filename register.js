@@ -8,6 +8,34 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentIndex = 0; // zero-based index into steps/tabs
     const totalSteps = steps.length;
 
+    // Payment plan elements
+    const paymentPlanRadios = document.querySelectorAll('input[name="payment-plan"]');
+    const paymentTotalEl = document.getElementById('payment-total');
+    const paymentNowEl = document.getElementById('payment-now');
+    const paymentNowRow = document.getElementById('payment-now-row');
+
+    // constants
+    const FORM_FEE = 3000;
+    const ENTRY_FEE = 130000;
+    const TOTAL_NAIRA = FORM_FEE + ENTRY_FEE;
+
+    function updatePaymentDisplay() {
+        const plan = document.querySelector('input[name="payment-plan"]:checked')?.value || 'full';
+        // total always shown
+        if (paymentTotalEl) paymentTotalEl.textContent = `₦${TOTAL_NAIRA.toLocaleString()}`;
+
+        if (plan === 'full') {
+            if (paymentNowEl) paymentNowEl.textContent = `₦${TOTAL_NAIRA.toLocaleString()}`;
+        } else {
+            // 3 installments, charge first installment now (rounded up)
+            const installment = Math.ceil(TOTAL_NAIRA / 3);
+            if (paymentNowEl) paymentNowEl.textContent = `₦${installment.toLocaleString()}`;
+        }
+    }
+
+    // attach listeners to radios
+    paymentPlanRadios.forEach(r => r.addEventListener('change', updatePaymentDisplay));
+
     function updateForm() {
         // Toggle Step Body (use order index so missing numbered steps don't break flow)
         steps.forEach((step, i) => {
@@ -64,10 +92,13 @@ document.addEventListener('DOMContentLoaded', () => {
             }
 
             // Payment details (amounts in Naira)
-            const FORM_FEE = 3000;
-            const ENTRY_FEE = 130000;
-            const totalNaira = FORM_FEE + ENTRY_FEE;
-            const amountKobo = totalNaira * 100; // Paystack uses kobo
+            // Determine amount to charge now based on selected plan
+            const plan = document.querySelector('input[name="payment-plan"]:checked')?.value || 'full';
+            let amountToChargeNaira = TOTAL_NAIRA;
+            if (plan === 'installments') {
+                amountToChargeNaira = Math.ceil(TOTAL_NAIRA / 3);
+            }
+            const amountKobo = amountToChargeNaira * 100; // Paystack uses kobo
 
             // Paystack public key - replace with your live/test key
             const PAYSTACK_PUBLIC_KEY = 'pk_test_73f2fe151d6d3c6f532fcda46bcf5b866537591d';
@@ -117,4 +148,5 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Initial setup
     updateForm();
+    updatePaymentDisplay();
 });
